@@ -1,12 +1,12 @@
 import numpy as np
 import cv2
 
-card_cascade = cv2.CascadeClassifier('set_card_cascade_v1.xml')
+card_cascade = cv2.CascadeClassifier('Cascades/set_card_cascade_v3.xml')
 
-img = cv2.imread('Images/test1.jpg')
+img = cv2.imread('Test_Images/test1.jpg')
 
 gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-cards = card_cascade.detectMultiScale(gray_img, scaleFactor=1.04, minNeighbors=21, minSize=(30, 30))
+cards = card_cascade.detectMultiScale(gray_img, scaleFactor=1.04, minNeighbors=3, minSize=(30, 30))
 
 for (x, y, w, h) in cards:
     cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
