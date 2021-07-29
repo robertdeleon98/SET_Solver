@@ -29,7 +29,7 @@ for f in os.listdir(dir):
 for (x, y, w, h) in cards:
     cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
     font = cv2.FONT_HERSHEY_SIMPLEX
-    cv2.putText(img, 'card', (x+w, y+h), font, 0.5, (255, 0, 0), 2, cv2.LINE_AA)
+    # cv2.putText(img, 'card', (x+w, y+h), font, 0.5, (255, 0, 0), 2, cv2.LINE_AA)
     roi_color = img[y:y + h, x:x + w]
     print("[INFO] Object found. Saving locally.")
     cv2.imwrite("Temp_Images/" + str(w) + str(h) + '_faces.jpg', roi_color)
