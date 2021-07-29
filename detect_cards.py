@@ -23,6 +23,9 @@ if not os.path.exists('Temp_Images'):
 #         linear_val = 1.0 - (face_distance / (range * 2.0))
 #         return linear_val + ((1.0 - linear_val) * math.pow((linear_val - 0.5) * 2, 0.2))
 
+for f in os.listdir(dir):
+    os.remove(os.path.join(dir, f))
+
 for (x, y, w, h) in cards:
     cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
     font = cv2.FONT_HERSHEY_SIMPLEX
@@ -34,7 +37,6 @@ for (x, y, w, h) in cards:
 cv2.imshow('test', img)
 cv2.waitKey(0)
 
-for f in os.listdir(dir):
-    os.remove(os.path.join(dir, f))
+
 
 cv2.destroyAllWindows()
