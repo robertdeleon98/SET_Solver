@@ -3,7 +3,6 @@
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
 tf.test.gpu_device_name() #run to make sure tensorflow is connected to gpu
-
 import numpy as np
 import pandas as pd
 import cv2
@@ -16,7 +15,7 @@ from matplotlib.pyplot import imread, imshow, subplots, show
 
 
 
-image = imread('cards/IMG_3042.jpg')
+image = imread('image-data/positive-images/r-f-s-2.PNG')
 images = image.reshape((1, image.shape[0], image.shape[1], image.shape[2]))
 imshow(images[0])
 show()
@@ -40,7 +39,7 @@ plt.show()
 
 data=[]
 
-for i, img in tqdm(enumerate(os.listdir('cards/'))):
+for i, img in tqdm(enumerate(os.listdir('image-data/positive-images'))):
     label=i
 
     img = cv2.imread('cards/'+img, cv2.IMREAD_GRAYSCALE)
@@ -56,11 +55,11 @@ for i, img in tqdm(enumerate(os.listdir('cards/'))):
 
 shuffle(data)
 
-np.save('D:/ML/card cv/data.npy', data)
+np.save('data.npy', data)
 
 
 
-data = np.load('D:/ML/card cv/data.npy', allow_pickle=True)
+data = np.load('data.npy', allow_pickle=True)
 
 train=data[:37000]
 test=data[37000:]
