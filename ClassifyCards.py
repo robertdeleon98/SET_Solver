@@ -42,14 +42,14 @@ data=[]
 for i, img in tqdm(enumerate(os.listdir('image-data/positive-images'))):
     label=i
 
-    img = cv2.imread('cards/'+img, cv2.IMREAD_GRAYSCALE)
+    img = cv2.imread('image-data/positive-images/'+img, cv2.IMREAD_GRAYSCALE)
     img = cv2.resize(img, (180, 180))
     imgs = img.reshape((1, img.shape[0], img.shape[1], 1))
     data_generator = ImageDataGenerator(rotation_range=90, brightness_range=(0.5, 1.5), shear_range=15.0, zoom_range=[.3, .8])
     data_generator.fit(imgs)
     image_iterator = data_generator.flow(imgs)
 
-    for x in range(750):
+    for x in range(50):
         img_transformed=image_iterator.next()[0].astype('int')/255
         data.append([img_transformed, label])
 
@@ -88,7 +88,7 @@ tf.keras.backend.clear_session()
 np.random.seed(42)
 tf.random.set_seed(42)
 
-epochs=250
+epochs=5
 batch_size=32
 
 model = tf.keras.models.Sequential([
