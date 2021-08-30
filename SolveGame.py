@@ -64,6 +64,14 @@ for j in range(len(filename)):
 for j in range(len(filename)):
     print(card1[j].color, card1[j].shading, card1[j].shape, card1[j].number)
 
+a = 0
+if card1[a].color == card1[a+1].color and card1[a].color == card1[a+2].color:
+    if card1[a].shape == card1[a+1].shape and card1[a].shape == card1[a+2].shape:
+        if card1[a].shading == card1[a+1].shading and card1[a].shading == card1[a+2].shading:
+            if card1[a].number == card1[a+1].number and card1[a].number == card1[a+2].number:
+                print("this is a set")
+print("not a set")
+
 
 # number = ['one', 'two', 'three']
 # shape = ['oval', 'diamond', 'squiggly']
@@ -102,3 +110,10 @@ if shape = squiggly
 #
 # print(cards)
 
+'''
+    def is_set(cards):
+        for attr in cards[0].attrs.keys():
+            if len(set([card.attrs[attr] for card in cards])) == 2:
+                return False
+        return True
+'''
