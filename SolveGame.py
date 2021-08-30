@@ -80,19 +80,19 @@ if shape = squiggly
     then card.shape=squiggly
 
 '''
-cards = [Card('', '', '', ''), Card('', '', '', ''), Card('', '', '', '')]
+cards = Card('', '', '', '')
 filename = "p-e-d-2.PNG"
 
 features = {'r': 'red', 'g': 'green', 'p': 'purple', 'f': 'full', 'l': 'lines', 'e': 'empty', 'o': 'oval',
             'd': 'diamond', 's': 'squiggly', '1': 'one', '2': 'two', '3': 'three'}
 i = 0
-cards[1].color = features[filename[i]]
+cards.color = features[filename[i]]
 i += 2
-cards[1].shading = features[filename[i]]
+cards.shading = features[filename[i]]
 i += 2
-cards[1].shape = features[filename[i]]
+cards.shape = features[filename[i]]
 i += 2
-cards[1].number = features[filename[i]]
+cards.number = features[filename[i]]
 
 print(cards)
 
