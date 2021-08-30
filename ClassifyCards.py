@@ -2,7 +2,7 @@
 # use tensorflow model with temp images extracted from card detector to classify cards
 import tensorflow as tf
 from tensorflow.keras.preprocessing.image import ImageDataGenerator
-tf.test.gpu_device_name() #run to make sure tensorflow is connected to gpu
+# tf.test.gpu_device_name() #run to make sure tensorflow is connected to gpu
 import numpy as np
 import pandas as pd
 import cv2
@@ -103,7 +103,7 @@ model = tf.keras.models.Sequential([
     tf.keras.layers.Flatten(),
     tf.keras.layers.Dropout(0.5),
     tf.keras.layers.Dense(512, activation='relu'),
-    tf.keras.layers.Dense(52, activation='softmax')
+    tf.keras.layers.Dense(93, activation='softmax')
 ])
 
 model.summary()
