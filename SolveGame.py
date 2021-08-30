@@ -25,38 +25,44 @@ class Card:
         self.number = number
 
 
-# card1 = Card('', '', '', '')
-# filename = "p-e-d-2.PNG"
-# print(len(filename))
-# i = 0
-# while filename[i] != '.':
-#     if filename[i] == 'r':
-#         card1.color = 'red'
-#     elif filename[i] == 'g':
-#         card1.color = 'green'
-#     elif filename[i] == 'p':
-#         card1.color = 'purple'
-#     elif filename[i] == 'f':
-#         card1.shading = 'full'
-#     elif filename[i] == 'l':
-#         card1.shading = 'lines'
-#     elif filename[i] == 'e':
-#         card1.shading = 'empty'
-#     elif filename[i] == 'o':
-#         card1.shape = 'oval'
-#     elif filename[i] == 'd':
-#         card1.shape = 'diamond'
-#     elif filename[i] == 's':
-#         card1.shape = 'squiggly'
-#     elif filename[i] == '1':
-#         card1.number = 'one'
-#     elif filename[i] == '2':
-#         card1.number = 'two'
-#     elif filename[i] == '3':
-#         card1.number = 'three'
-#     i += 1
-#
-# print(card1.color, card1.shading, card1.shape, card1.number)
+card1 = [Card('', '', '', ''), Card('', '', '', ''), Card('', '', '', '')]
+filename = ["p-e-d-2.PNG", "g-e-s-1.PNG", "r-f-s-2.PNG"]
+print(len(filename))
+
+i = 0
+j = 0
+
+for j in range(len(filename)):
+    i = 0
+    while filename[j][i] != '.':
+        if filename[j][i] == 'r':
+            card1[j].color = 'red'
+        elif filename[j][i] == 'g':
+            card1[j].color = 'green'
+        elif filename[j][i] == 'p':
+            card1[j].color = 'purple'
+        elif filename[j][i] == 'f':
+            card1[j].shading = 'full'
+        elif filename[j][i] == 'l':
+            card1[j].shading = 'lines'
+        elif filename[j][i] == 'e':
+            card1[j].shading = 'empty'
+        elif filename[j][i] == 'o':
+            card1[j].shape = 'oval'
+        elif filename[j][i] == 'd':
+            card1[j].shape = 'diamond'
+        elif filename[j][i] == 's':
+            card1[j].shape = 'squiggly'
+        elif filename[j][i] == '1':
+            card1[j].number = 'one'
+        elif filename[j][i] == '2':
+            card1[j].number = 'two'
+        elif filename[j][i] == '3':
+            card1[j].number = 'three'
+        i += 1
+
+for j in range(len(filename)):
+    print(card1[j].color, card1[j].shading, card1[j].shape, card1[j].number)
 
 
 # number = ['one', 'two', 'three']
@@ -80,19 +86,19 @@ if shape = squiggly
     then card.shape=squiggly
 
 '''
-cards = Card('', '', '', '')
-filename = "p-e-d-2.PNG"
-
-features = {'r': 'red', 'g': 'green', 'p': 'purple', 'f': 'full', 'l': 'lines', 'e': 'empty', 'o': 'oval',
-            'd': 'diamond', 's': 'squiggly', '1': 'one', '2': 'two', '3': 'three'}
-i = 0
-cards.color = features[filename[i]]
-i += 2
-cards.shading = features[filename[i]]
-i += 2
-cards.shape = features[filename[i]]
-i += 2
-cards.number = features[filename[i]]
-
-print(cards)
+# cards = Card('', '', '', '')
+# filename = "p-e-d-2.PNG"
+#
+# features = {'r': 'red', 'g': 'green', 'p': 'purple', 'f': 'full', 'l': 'lines', 'e': 'empty', 'o': 'oval',
+#             'd': 'diamond', 's': 'squiggly', '1': 'one', '2': 'two', '3': 'three'}
+# i = 0
+# cards.color = features[filename[i]]
+# i += 2
+# cards.shading = features[filename[i]]
+# i += 2
+# cards.shape = features[filename[i]]
+# i += 2
+# cards.number = features[filename[i]]
+#
+# print(cards)
 
