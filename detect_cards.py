@@ -32,7 +32,7 @@ for (x, y, w, h) in cards:
     cv2.putText(img, 'card', (x+w, y+h), font, 0.5, (255, 0, 0), 2, cv2.LINE_AA)
     roi_color = img[y:y + h, x:x + w]
     print("[INFO] Object found. Saving locally.")
-    cv2.imwrite("Temp_Images/" + str(w) + str(h) + '_faces.jpg', roi_color)
+    cv2.imwrite("Temp_Images/" + str(w) + str(h) + '.jpg', roi_color)
 
 cv2.imshow('test', img)
 cv2.waitKey(0)

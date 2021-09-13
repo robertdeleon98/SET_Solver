@@ -1,21 +1,13 @@
-'''
-SET Rules
-They all have the same color or have three different colors.
-They all have the same shading or have three different shadings.
-They all have the same shape or have three different shapes.
-They all have the same number or have three different numbers.
-'''
-
-
 # import numpy as np
 # import pandas as pd
 # import cv2
 # import os
+import time
+import itertools
 # from random import shuffle
 # from tqdm import tqdm
 # import matplotlib.pyplot as plt
 # from matplotlib.pyplot import imread, imshow, subplots, show
-
 
 class Card:
     def __init__(self, color, shading, shape, number):
@@ -24,9 +16,23 @@ class Card:
         self.shape = shape
         self.number = number
 
+start_time = time.time_ns()
 
-card1 = [Card('', '', '', ''), Card('', '', '', ''), Card('', '', '', '')]
-filename = ["p-e-d-2.PNG", "g-e-s-1.PNG", "r-f-s-2.PNG"]
+card = []
+for i in range(12):
+    card.append(Card('', '', '', ''))
+filename = ["r-e-d-3.PNG",
+            "g-f-o-3.PNG",
+            "p-l-s-3.PNG",
+            "g-e-d-1.PNG",
+            "g-e-s-1.PNG",
+            "p-e-d-2.PNG",
+            "p-e-o-2.PNG",
+            "p-f-o-3.PNG",
+            "p-l-d-1.PNG",
+            "r-f-s-2.PNG",
+            "r-l-d-2.PNG",
+            "r-l-s-1.PNG"]
 print(len(filename))
 
 i = 0
@@ -36,43 +42,68 @@ for j in range(len(filename)):
     i = 0
     while filename[j][i] != '.':
         if filename[j][i] == 'r':
-            card1[j].color = 'red'
+            card[j].color = 'red'
         elif filename[j][i] == 'g':
-            card1[j].color = 'green'
+            card[j].color = 'green'
         elif filename[j][i] == 'p':
-            card1[j].color = 'purple'
+            card[j].color = 'purple'
         elif filename[j][i] == 'f':
-            card1[j].shading = 'full'
+            card[j].shading = 'full'
         elif filename[j][i] == 'l':
-            card1[j].shading = 'lines'
+            card[j].shading = 'lines'
         elif filename[j][i] == 'e':
-            card1[j].shading = 'empty'
+            card[j].shading = 'empty'
         elif filename[j][i] == 'o':
-            card1[j].shape = 'oval'
+            card[j].shape = 'oval'
         elif filename[j][i] == 'd':
-            card1[j].shape = 'diamond'
+            card[j].shape = 'diamond'
         elif filename[j][i] == 's':
-            card1[j].shape = 'squiggly'
+            card[j].shape = 'squiggly'
         elif filename[j][i] == '1':
-            card1[j].number = 'one'
+            card[j].number = 'one'
         elif filename[j][i] == '2':
-            card1[j].number = 'two'
+            card[j].number = 'two'
         elif filename[j][i] == '3':
-            card1[j].number = 'three'
+            card[j].number = 'three'
         i += 1
 
-for j in range(len(filename)):
-    print(card1[j].color, card1[j].shading, card1[j].shape, card1[j].number)
+# for j in range(len(filename)):
+#     print(card[j].color, card[j].shading, card[j].shape, card[j].number)
 
-a = 0
-if card1[a].color == card1[a+1].color and card1[a].color == card1[a+2].color:
-    if card1[a].shape == card1[a+1].shape and card1[a].shape == card1[a+2].shape:
-        if card1[a].shading == card1[a+1].shading and card1[a].shading == card1[a+2].shading:
-            if card1[a].number == card1[a+1].number and card1[a].number == card1[a+2].number:
-                print("this is a set")
-print("not a set")
+for subset in itertools.combinations(card, 3):
+    for j in range(len(subset)):
+        print(subset[j].color, subset[j].shading, subset[j].shape, subset[j].number)
+
+    a = 0
+    if (subset[a].color == subset[a+1].color and subset[a].color == subset[a+2].color) or (subset[a].color != subset[a+1].color and subset[a].color != subset[a+2].color):
+        if (subset[a].shape == subset[a+1].shape and subset[a].shape == subset[a+2].shape) or (subset[a].shape != subset[a+1].shape and subset[a].shape != subset[a+2].shape):
+            if (subset[a].shading == subset[a+1].shading and subset[a].shading == subset[a+2].shading) or (subset[a].shading != subset[a+1].shading and subset[a].shading != subset[a+2].shading):
+                if (subset[a].number == subset[a+1].number and subset[a].number == subset[a+2].number) or (subset[a].number != subset[a+1].number and subset[a].number != subset[a+2].number):
+                    print("this is a set\n")
+                    card_set = subset
+                    break
+                else:
+                    print("this is not a set\n")
+            else:
+                print("this is not a set\n")
+        else:
+            print("this is not a set\n")
+    else:
+        print("this is not a set\n")
+'''
+SET Rules
+They all have the same color or have three different colors.
+They all have the same shading or have three different shadings.
+They all have the same shape or have three different shapes.
+They all have the same number or have three different numbers.
+'''
 
 
+
+end_time = time.time_ns()
+
+total_time = end_time - start_time
+print(total_time / (10**9))
 # number = ['one', 'two', 'three']
 # shape = ['oval', 'diamond', 'squiggly']
 # shading = ['full', 'lines', 'empty']
