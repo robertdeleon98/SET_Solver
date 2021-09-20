@@ -104,6 +104,7 @@ end_time = time.time_ns()
 
 total_time = end_time - start_time
 print(total_time / (10**9))
+
 # number = ['one', 'two', 'three']
 # shape = ['oval', 'diamond', 'squiggly']
 # shading = ['full', 'lines', 'empty']
