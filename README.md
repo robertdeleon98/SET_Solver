@@ -9,6 +9,7 @@ https://www.digitalocean.com/community/tutorials/how-to-detect-and-extract-faces
 
 ## Things to finish:
 - take set that was found using algorithm and highlight original cards in image
+-- figure out how to extract location from image filename
 - TensorFlow model - making sure that model is connected properly in the process pipeline
 
 ## Process pipeline:
