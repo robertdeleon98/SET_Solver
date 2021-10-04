@@ -9,12 +9,14 @@ import itertools
 # import matplotlib.pyplot as plt
 # from matplotlib.pyplot import imread, imshow, subplots, show
 
+
 class Card:
     def __init__(self, color, shading, shape, number):
         self.color = color
         self.shading = shading
         self.shape = shape
         self.number = number
+
 
 start_time = time.time_ns()
 
