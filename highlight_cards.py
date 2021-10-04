@@ -4,27 +4,43 @@ import os
 import math
 
 img = cv2.imread('Test_Images/test4.jpg')
-
-
+test_cards = ["1-2_2-4.jpg", "132-223_24-443.jpg", "12-23_24-43.jpg"]
 # format: x-y_w-h.jpg
-test_card = "9-5_219-146.jpg"
-print(len(test_card))
+for z in range(3):
+    card = test_cards[z]
+    i = 0
+    x, y, w, h = '', '', '', ''
 
-first_value_flag = True
-i = 0
-x, y, w, h = '', '', '', ''
-
-
-while test_card[i] != '_':
-    while first_value_flag:
-        if test_card[i] != '-':
-            x = x + test_card[i]
+    while card[i] != '-':
+        x += card[i]
+        i += 1
+    else:
+        i += 1
+        while card[i] != '_':
+            y += card[i]
             i += 1
         else:
-            first_value_flag = False
+            i += 1
+            while card[i] != '-':
+                w += card[i]
+                i += 1
+            else:
+                i += 1
+                while card[i] != '.':
+                    h += card[i]
+                    i += 1
+                else:
+                    pass
+    x = int(x)
+    y = int(y)
+    w = int(w)
+    h = int(h)
 
-    y = y + test_card[i]
-    i += 1
+    img = cv2.imread('Test_Images/test4.jpg')
+    cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
 
 
-print(x, y)
+cv2.imshow('test', img)
+cv2.waitKey(0)
+
+cv2.destroyAllWindows()
