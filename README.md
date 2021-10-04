@@ -19,3 +19,4 @@ https://www.digitalocean.com/community/tutorials/how-to-detect-and-extract-faces
 - take classified cards and solve for sets using algorithm
 - take found sets and highlight the original cards in the image
 
+test
