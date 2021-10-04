@@ -4,8 +4,9 @@ import os
 import math
 
 img = cv2.imread('Test_Images/test4.jpg')
-test_cards = ["1-2_2-4.jpg", "132-223_24-443.jpg", "12-23_24-43.jpg"]
+test_cards = ["9-5_219-146.jpg", "11-158_217-144.jpg", "255-461_214-142.jpg"]
 # format: x-y_w-h.jpg
+img = cv2.imread('Test_Images/test4.jpg')
 for z in range(3):
     card = test_cards[z]
     i = 0
@@ -35,8 +36,6 @@ for z in range(3):
     y = int(y)
     w = int(w)
     h = int(h)
-
-    img = cv2.imread('Test_Images/test4.jpg')
     cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
 
 
