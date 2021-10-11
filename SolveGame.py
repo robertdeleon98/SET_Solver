@@ -1,13 +1,4 @@
-# import numpy as np
-# import pandas as pd
-# import cv2
-# import os
-import time
 import itertools
-# from random import shuffle
-# from tqdm import tqdm
-# import matplotlib.pyplot as plt
-# from matplotlib.pyplot import imread, imshow, subplots, show
 
 
 class Card:
@@ -18,22 +9,20 @@ class Card:
         self.number = number
 
 
-start_time = time.time_ns()
-
 card = []
 for i in range(12):
     card.append(Card('', '', '', ''))
-filename = ["g-f-o-1x123-412_345-637.PNG",
+filename = ["g-f-o-1x9-5_219-146.PNG",
             "r-f-o-3x.PNG",
             "r-f-d-2x.PNG",
-            "p-f-s-1x.PNG",
+            "p-f-s-1x11-158_217-144.PNG",
             "r-l-o-3x.PNG",
             "g-l-o-2x.PNG",
             "g-e-d-1x.PNG",
             "p-f-o-3x.PNG",
             "r-e-s-3x.PNG",
             "g-e-s-3x.PNG",
-            "r-f-d-1x.PNG",
+            "r-f-d-1x255-461_214-142.PNG",
             "p-e-o-3x.PNG"]
 print(len(filename))
 
@@ -42,34 +31,6 @@ j = 0
 
 for j in range(len(filename)):
     i = 0
-    '''
-    while filename[j][i] != 'x':
-        if filename[j][i] == 'r':
-            card[j].color = 'red'
-        elif filename[j][i] == 'g':
-            card[j].color = 'green'
-        elif filename[j][i] == 'p':
-            card[j].color = 'purple'
-        elif filename[j][i] == 'f':
-            card[j].shading = 'full'
-        elif filename[j][i] == 'l':
-            card[j].shading = 'lines'
-        elif filename[j][i] == 'e':
-            card[j].shading = 'empty'
-        elif filename[j][i] == 'o':
-            card[j].shape = 'oval'
-        elif filename[j][i] == 'd':
-            card[j].shape = 'diamond'
-        elif filename[j][i] == 's':
-            card[j].shape = 'squiggly'
-        elif filename[j][i] == '1':
-            card[j].number = 'one'
-        elif filename[j][i] == '2':
-            card[j].number = 'two'
-        elif filename[j][i] == '3':
-            card[j].number = 'three'
-        i += 1
-    '''
     while filename[j][i] != 'x':
         card[j].color = filename[j][i]
         print(card[j].color)
@@ -83,8 +44,6 @@ for j in range(len(filename)):
         card[j].number = filename[j][i]
         print(card[j].number)
         i += 1
-# for j in range(len(filename)):
-#     print(card[j].color, card[j].shading, card[j].shape, card[j].number)
 
 '''
 SET Rules
@@ -93,6 +52,7 @@ They all have the same shading or have three different shadings.
 They all have the same shape or have three different shapes.
 They all have the same number or have three different numbers.
 '''
+
 for subset in itertools.combinations(card, 3):
     for j in range(len(subset)):
         print(subset[j].color, subset[j].shading, subset[j].shape, subset[j].number)
@@ -117,12 +77,13 @@ for subset in itertools.combinations(card, 3):
 set_list = []
 for i in range(len(card_set)):
     print(card_set[i].color, card_set[i].shading, card_set[i].shape, card_set[i].number)
-    set_list.append(str(card_set[i].color)+'-'+str(card_set[i].shading)+'-'+str(card_set[i].shape)+'-'+str(card_set[i].number))
+    set_card = str(card_set[i].color)+'-'+str(card_set[i].shading)+'-'+str(card_set[i].shape)+'-'+str(card_set[i].number)
+    for j in range(len(filename)):
+        if set_card == filename[j][0:7]:
+            set_list.append(filename[j])
 print(set_list)
 
-
-end_time = time.time_ns()
-
-total_time = end_time - start_time
-print(total_time / (10**9))
+f = open("set_cards_list.txt", "w")
+f.write('\n'.join(set_list))
+f.close()
 

@@ -1,14 +1,17 @@
-import numpy as np
 import cv2
-import os
-import math
 
 img = cv2.imread('Test_Images/test4.jpg')
-test_cards = ["9-5_219-146.jpg", "11-158_217-144.jpg", "255-461_214-142.jpg"]
-# format: x-y_w-h.jpg
+
+f = open("set_cards_list.txt", "r")
+test_cards = []
+test_cards = f.readlines()
+f.close()
+
+# print(test_cards)
+
 img = cv2.imread('Test_Images/test4.jpg')
 for z in range(3):
-    card = test_cards[z]
+    card = test_cards[z][8:]  # sliced format: x-y_w-h.jpg
     i = 0
     x, y, w, h = '', '', '', ''
 
@@ -37,7 +40,6 @@ for z in range(3):
     w = int(w)
     h = int(h)
     cv2.rectangle(img, (x, y), (x + w, y + h), (255, 0, 0), 2)
-
 
 cv2.imshow('test', img)
 cv2.waitKey(0)
