@@ -6,10 +6,10 @@ https://www.digitalocean.com/community/tutorials/how-to-detect-and-extract-faces
 - scan image and detect cards using haar cascade
 - extract card features from card filenames (e.g. r-f-s-2 = red filled squiggle x2)
 - algorithm to look for sets in a group of 12 different cards
-
-## Things to finish:
 - take set that was found using algorithm and highlight original cards in image
 -- figure out how to extract location from image filename
+
+## Things to finish:
 - TensorFlow model - making sure that model is connected properly in the process pipeline
 
 ## Process pipeline:
