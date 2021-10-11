@@ -1,5 +1,5 @@
 import itertools
-
+import os
 
 class Card:
     def __init__(self, color, shading, shape, number):
@@ -12,18 +12,22 @@ class Card:
 card = []
 for i in range(12):
     card.append(Card('', '', '', ''))
-filename = ["g-f-o-1x9-5_219-146.PNG",
-            "r-f-o-3x.PNG",
-            "r-f-d-2x.PNG",
-            "p-f-s-1x11-158_217-144.PNG",
-            "r-l-o-3x.PNG",
-            "g-l-o-2x.PNG",
-            "g-e-d-1x.PNG",
-            "p-f-o-3x.PNG",
-            "r-e-s-3x.PNG",
-            "g-e-s-3x.PNG",
-            "r-f-d-1x255-461_214-142.PNG",
-            "p-e-o-3x.PNG"]
+
+dir = "Labeled_Images"
+filename = os.listdir(dir)
+print(filename)
+# filename = ["g-f-o-1x9-5_219-146.PNG",
+#             "r-f-o-3x.PNG",
+#             "r-f-d-2x.PNG",
+#             "p-f-s-1x11-158_217-144.PNG",
+#             "r-l-o-3x.PNG",
+#             "g-l-o-2x.PNG",
+#             "g-e-d-1x.PNG",
+#             "p-f-o-3x.PNG",
+#             "r-e-s-3x.PNG",
+#             "g-e-s-3x.PNG",
+#             "r-f-d-1x255-461_214-142.PNG",
+#             "p-e-o-3x.PNG"]
 print(len(filename))
 
 i = 0
@@ -33,16 +37,16 @@ for j in range(len(filename)):
     i = 0
     while filename[j][i] != 'x':
         card[j].color = filename[j][i]
-        print(card[j].color)
+        # print(card[j].color)
         i += 2
         card[j].shading = filename[j][i]
-        print(card[j].shading)
+        # print(card[j].shading)
         i += 2
         card[j].shape = filename[j][i]
-        print(card[j].shape)
+        # print(card[j].shape)
         i += 2
         card[j].number = filename[j][i]
-        print(card[j].number)
+        # print(card[j].number)
         i += 1
 
 '''
@@ -54,17 +58,21 @@ They all have the same number or have three different numbers.
 '''
 
 for subset in itertools.combinations(card, 3):
+    print(len(subset))
     for j in range(len(subset)):
         print(subset[j].color, subset[j].shading, subset[j].shape, subset[j].number)
 
     a = 0
-    if (subset[a].color == subset[a+1].color and subset[a].color == subset[a+2].color and subset[a+1].color == subset[a+2].color) or (subset[a].color != subset[a+1].color and subset[a].color != subset[a+2].color and subset[a+1].color != subset[a+2].color):
-        if (subset[a].shape == subset[a+1].shape and subset[a].shape == subset[a+2].shape and subset[a+1].shape == subset[a+2].shape) or (subset[a].shape != subset[a+1].shape and subset[a].shape != subset[a+2].shape and subset[a+1].shape != subset[a+2].shape):
-            if (subset[a].shading == subset[a+1].shading and subset[a].shading == subset[a+2].shading and subset[a+1].shading == subset[a+2].shading) or (subset[a].shading != subset[a+1].shading and subset[a].shading != subset[a+2].shading and subset[a+1].shading != subset[a+2].shading):
-                if (subset[a].number == subset[a+1].number and subset[a].number == subset[a+2].number and subset[a+1].number == subset[a+2].number) or (subset[a].number != subset[a+1].number and subset[a].number != subset[a+2].number and subset[a+1].number != subset[a+2].number):
-                    print("this is a set\n")
-                    card_set = subset
-                    break
+    if len(subset) == 3:
+        if (subset[a].color == subset[a+1].color and subset[a].color == subset[a+2].color and subset[a+1].color == subset[a+2].color) or (subset[a].color != subset[a+1].color and subset[a].color != subset[a+2].color and subset[a+1].color != subset[a+2].color):
+            if (subset[a].shape == subset[a+1].shape and subset[a].shape == subset[a+2].shape and subset[a+1].shape == subset[a+2].shape) or (subset[a].shape != subset[a+1].shape and subset[a].shape != subset[a+2].shape and subset[a+1].shape != subset[a+2].shape):
+                if (subset[a].shading == subset[a+1].shading and subset[a].shading == subset[a+2].shading and subset[a+1].shading == subset[a+2].shading) or (subset[a].shading != subset[a+1].shading and subset[a].shading != subset[a+2].shading and subset[a+1].shading != subset[a+2].shading):
+                    if (subset[a].number == subset[a+1].number and subset[a].number == subset[a+2].number and subset[a+1].number == subset[a+2].number) or (subset[a].number != subset[a+1].number and subset[a].number != subset[a+2].number and subset[a+1].number != subset[a+2].number):
+                        print("this is a set\n")
+                        card_set = subset
+                        break
+                    else:
+                        print("this is not a set\n")
                 else:
                     print("this is not a set\n")
             else:

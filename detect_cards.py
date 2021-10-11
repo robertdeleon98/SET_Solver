@@ -5,7 +5,7 @@ import math
 
 card_cascade = cv2.CascadeClassifier('Cascades/set_card_cascade_v3.xml')
 dir = "Temp_Images"
-img = cv2.imread('Test_Images/test4.jpg')
+img = cv2.imread('Test_Images/test1.jpg')
 
 gray_img = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 cards = card_cascade.detectMultiScale(gray_img, scaleFactor=1.04, minNeighbors=4, minSize=(30, 30))

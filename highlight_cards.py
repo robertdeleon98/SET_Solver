@@ -1,6 +1,6 @@
 import cv2
 
-img = cv2.imread('Test_Images/test4.jpg')
+img = cv2.imread('Test_Images/test1.jpg')
 
 f = open("set_cards_list.txt", "r")
 test_cards = []
@@ -8,8 +8,6 @@ test_cards = f.readlines()
 f.close()
 
 # print(test_cards)
-
-img = cv2.imread('Test_Images/test4.jpg')
 for z in range(3):
     card = test_cards[z][8:]  # sliced format: x-y_w-h.jpg
     i = 0
