@@ -1,6 +1,6 @@
 import cv2
-
-img = cv2.imread('Test_Images/test1.jpg')
+from detect_cards import input_image_path
+img = cv2.imread(input_image_path)
 
 f = open("set_cards_list.txt", "r")
 test_cards = []
