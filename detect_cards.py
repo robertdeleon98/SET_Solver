@@ -2,7 +2,8 @@ import numpy as np
 import cv2
 import os
 import math
-input_image_path = "Test_Images/test4.jpg"
+from main import input_image_path
+
 card_cascade = cv2.CascadeClassifier('Cascades/set_card_cascade_v3.xml')
 dir = "Temp_Images"
 img = cv2.imread(input_image_path)

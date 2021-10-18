@@ -35,7 +35,7 @@ for i in range(len(image_names)):
     image = Image.open("Temp_Images/" + image_names[i])
     # resize the image to a 224x224 with the same strategy as in TM2:
     # resizing the image to be at least 224x224 and then cropping from the center
-    image = ImageOps.fit(image, size, Image.ANTIALIAS)
+    image = ImageOps.pad(image, size, Image.ANTIALIAS, color='white')
 
     # turn the image into a numpy array
     image_array = np.asarray(image)

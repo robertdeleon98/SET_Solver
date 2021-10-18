@@ -1,5 +1,5 @@
 import cv2
-from detect_cards import input_image_path
+from main import input_image_path
 img = cv2.imread(input_image_path)
 
 f = open("set_cards_list.txt", "r")
